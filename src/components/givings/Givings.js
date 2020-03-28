@@ -17,7 +17,7 @@ const GivingsContainer = styled.View`
 const GivingsCard = styled.View`
     min-height: 180px;
     width: 350px;
-    margin: 0px 10px 0px 10px;
+    margin-left: 20px;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 5px ${(props) => props.theme.shadow};
@@ -43,7 +43,7 @@ const UserImg = styled.Image`
 `;
 
 const UserFirstName = styled.Text`
-    font-size: 23px;
+    font-size: 21px;
     font-family: '600';
     color: ${(props) => props.theme.gray800};
 `;
