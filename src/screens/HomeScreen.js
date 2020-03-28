@@ -1,20 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Example = styled.View`
-    height: 300;
-    background-color: red;
+import Givings from '../components/givings/Givings';
+
+const HomeContainer = styled.View`
+    flex: 1;
+    background-color: #f1f1f1;
 `;
 
-const TextExample = styled.Text`
-    font-size: 30;
+const CategoryText = styled.Text`
+    font-size: 26px;
+    margin: 100px 0px 10px 20px;
+    font-family: '800';
 `;
 
 function HomeScreen() {
     return (
-        <Example>
-            <TextExample>Home</TextExample>
-        </Example>
+        <>
+            <HomeContainer>
+                <CategoryText>Recent Givings</CategoryText>
+                <Givings />
+            </HomeContainer>
+        </>
     );
 }
 

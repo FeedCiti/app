@@ -1,13 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
 import styled from 'styled-components/native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 import GiveIconType from './GiveIconType';
 import { FOOD, CLOTHES, MONEY, MEDS } from './types.give';
 
 // GIVINGS LIST STYLES \\
 const GivingsList = styled.FlatList`
-    height: 180px;
+    height: 190px;
 `;
 
 const GivingsContainer = styled.View`
@@ -15,7 +15,7 @@ const GivingsContainer = styled.View`
 `;
 
 const GivingsCard = styled.View`
-    height: 150px;
+    min-height: 180px;
     width: 350px;
     margin: 0px 10px 0px 10px;
     padding: 20px;
@@ -54,25 +54,33 @@ const UserLocation = styled.Text`
     color: ${(props) => props.theme.gray500};
 `;
 
+const UserMessage = styled.Text`
+    font-family: '500';
+    font-size: 19px;
+    margin: 12px 0px;
+    color: ${(props) => props.theme.gray500};
+`;
+
+const MessageDate = styled.Text`
+    font-family: '600';
+    font-size: 17px;
+    color: ${(props) => props.theme.gray350};
+`;
+
 function Givings() {
     // Remove later, this is just filler info
     const friends = [
-        { name: 'Friend #1' },
-        { name: 'Friend #2' },
-        { name: 'Friend #3' },
-        { name: 'Friend #4' },
-        { name: 'Friend #5' },
-        { name: 'Friend #6' },
-        { name: 'Friend #7' },
-        { name: 'Friend #8' },
-        { name: 'Friend #9' },
-        { name: 'Friend #10' },
+        { name: 'Friend #1', message: 'Lorem ipsun delorem Lorem ipsun delorem' },
+        { name: 'Friend #2', message: 'Lorem ipsun delorem Lorem ipsun delorem' },
+        { name: 'Friend #3', message: 'Lorem ipsun delorem Lorem ipsun delorem' },
+        { name: 'Friend #4', message: 'Lorem ipsun delorem Lorem ipsun delorem' },
     ];
 
     return (
         <GivingsContainer>
             <GivingsList
                 horizontal
+                showsHorizontalScrollIndicator={false}
                 data={friends}
                 keyExtractor={(friend) => friend.name}
                 renderItem={({ item }) => (
@@ -86,6 +94,12 @@ function Givings() {
                                 </UserNameLoc>
                                 <GiveIconType iconType={FOOD} />
                             </UserInfo>
+                            <UserMessage>{item.message}</UserMessage>
+                            <MessageDate>
+                                <Entypo name='calendar' style={{ fontSize: 17 }} />
+                                {'  '}
+                                1/1/2020(0:00:00 PM)
+                            </MessageDate>
                         </GivingsCard>
                     </GivingsContainer>
                 )}

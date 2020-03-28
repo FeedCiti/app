@@ -16,9 +16,9 @@ const store = createStore(reducers, composeEnhancers(applyMiddleware(reduxThunk)
 
 const getFonts = () => {
     return Font.loadAsync({
-        SofiaProMedium: require('./assets/fonts/SofiaProMedium.ttf'),
-        SofiaProBold: require('./assets/fonts/SofiaProBold.ttf'),
-        SofiaProBlack: require('./assets/fonts/SofiaProBlack.ttf'),
+        500: require('./assets/fonts/SofiaProMedium.ttf'),
+        600: require('./assets/fonts/SofiaProBold.ttf'),
+        800: require('./assets/fonts/SofiaProBlack.ttf'),
     });
 };
 
