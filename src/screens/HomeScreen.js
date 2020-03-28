@@ -3,15 +3,15 @@ import { ScrollView } from 'react-native';
 import styled from 'styled-components';
 
 import Givings from '../components/givings/Givings';
-import HomeMap from '../components/maps/HomeMap';
+import CitiMap from '../components/maps/CitiMap';
 
 const HomeContainer = styled.View`
     background-color: #f1f1f1;
 `;
 
 const CategoryText = styled.Text`
-    font-size: 26px;
-    margin: 30px 0px 10px 20px;
+    font-size: 25px;
+    margin: 25px 0px 10px 20px;
     font-family: '800';
 `;
 
@@ -19,8 +19,10 @@ function HomeScreen() {
     return (
         <>
             <HomeContainer>
-                <HomeMap />
+                <CitiMap homeMap />
                 <ScrollView>
+                    <CategoryText>Recent Givings</CategoryText>
+                    <Givings />
                     <CategoryText>Recent Givings</CategoryText>
                     <Givings />
                 </ScrollView>
