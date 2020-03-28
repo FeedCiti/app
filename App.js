@@ -6,20 +6,13 @@ import styled, { ThemeProvider } from 'styled-components/native';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
-import reducers from './src/store/reducers/reducers';
 
+import reducers from './src/store/reducers/reducers';
 import theme from './config/theme';
+import Navigation from './src/components/Navigation';
 
 const composeEnhancers = compose;
 const store = createStore(reducers, composeEnhancers(applyMiddleware(reduxThunk)));
-
-const Title = styled.Text`
-    font-size: 24px;
-    padding: 20px;
-    font-family: 'SofiaProBold';
-    color: ${(props) => props.theme.white};
-    background-color: ${(props) => props.theme.primary};
-`;
 
 const getFonts = () => {
     return Font.loadAsync({
@@ -36,9 +29,7 @@ export default function App() {
         return (
             <Provider store={store}>
                 <ThemeProvider theme={theme}>
-                    <View style={styles.container}>
-                        <Title>Hello there</Title>
-                    </View>
+                    <Navigation />
                 </ThemeProvider>
             </Provider>
         );
@@ -46,13 +37,3 @@ export default function App() {
 
     return <AppLoading startAsync={getFonts} onFinish={() => setFonts(true)} />;
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        fontFamily: 'SofiaProBlack',
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
