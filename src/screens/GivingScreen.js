@@ -62,8 +62,26 @@ const GivingInputMsg = styled.TextInput`
     font-family: ${Fonts.F700};
 `;
 
+const SubmitBtn = styled.TouchableOpacity`
+    border-radius: 10px;
+    margin: auto;
+    width: 150px;
+    background-color: ${(props) => props.theme.giveBlue};
+`;
+
+const SubmitTxt = styled.Text`
+    margin: auto;
+    padding: 10px;
+    justify-content: center;
+    color: ${(props) => props.theme.white};
+    font-family: ${Fonts.F700};
+    font-size: 19px;
+`;
+
 function GivingScreen() {
     const navigation = useNavigation();
+
+    const GIVEN_NAME = useSelector((state) => state.authReducer.user.given_name);
 
     const { TOKEN } = useSelector((state) => ({
         TOKEN: state.authReducer.token
@@ -73,7 +91,6 @@ function GivingScreen() {
 
     const [valueRadio, setRadioValue] = useState(0);
     const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
-    console.log(valueRadio);
 
     const radio_props = [
         { label: 'Food', value: 1 },
@@ -104,6 +121,7 @@ function GivingScreen() {
         });
     };
 
+    // TODO: Disable viewing this until a user is authenticated
     return (
         <Formik
             initialValues={{ type: 0, anonymous: false, description: '' }}
@@ -112,8 +130,12 @@ function GivingScreen() {
             {({ handleChange, handleBlur, handleSubmit, values }) => (
                 <GivingContainer>
                     <GivingContent>
-                        <HeadingText>Thank you, Name.</HeadingText>
-                        <SubHeading>Lorem ipsum delorem </SubHeading>
+                        {GIVEN_NAME ? (
+                            <HeadingText>Thank you, {GIVEN_NAME}.</HeadingText>
+                        ) : (
+                            <HeadingText>Thank you, Name.</HeadingText>
+                        )}
+                        <SubHeading>Lets continue to change lives.</SubHeading>
                         <GivingQuestion style={{ marginBottom: 8, marginTop: 12 }}>
                             What did you give?
                         </GivingQuestion>
@@ -164,7 +186,9 @@ function GivingScreen() {
                             onBlur={handleBlur('description')}
                             value={values.description}
                         />
-                        <Button title='Submit' onPress={handleSubmit} />
+                        <SubmitBtn onPress={handleSubmit}>
+                            <SubmitTxt>Submit</SubmitTxt>
+                        </SubmitBtn>
                     </GivingContent>
                 </GivingContainer>
             )}
