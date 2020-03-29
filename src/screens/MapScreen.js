@@ -10,4 +10,3 @@ function MapScreen() {
 }
 
 export default MapScreen;
-
