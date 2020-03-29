@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/native';
-import { useDispatch } from 'react-redux';
+import _ from 'lodash';
 
+import feedciti from '../../apis/feedciti';
 import GiveIconType from './GiveIconType';
 import Fonts from '../../../config/Fonts';
 import { FOOD, CLOTHES, MONEY, MEDS } from './types.give';
@@ -63,43 +64,61 @@ const UserMessage = styled.Text`
 `;
 
 function Givings() {
-    // Remove later, this is just filler info
-    const friends = [
-        {
-            name: 'Friend #1',
-            message: 'Lorem ipsun delorem Lorem ipsun delorem lorem lorem lorem'
-        },
-        { name: 'Friend #2', message: 'Lorem ipsun delorem Lorem ipsun delorem' },
-        { name: 'Friend #3', message: 'Lorem ipsun delorem Lorem ipsun delorem' },
-        { name: 'Friend #4', message: 'Lorem ipsun delorem Lorem ipsun delorem' }
-    ];
+    const dtf = new Intl.DateTimeFormat('en', {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric'
+    });
+    const [globalGivings, setGivings] = useState([]);
+    useEffect(() => {
+        feedciti
+            .get('/api/givings')
+            .then((res) => {
+                setGivings(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
 
     return (
         <GivingsContainer>
-            <GivingsList
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                data={friends}
-                keyExtractor={(friend) => friend.name}
-                renderItem={({ item }) => (
-                    <GivingsContainer>
-                        <GivingsCard>
-                            <UserInfo>
-                                <UserImg />
-                                <UserNameLoc>
-                                    <UserFirstName>Default</UserFirstName>
-                                    <UserLocation>City, State</UserLocation>
-                                </UserNameLoc>
-                                <GiveIconType iconType={FOOD} />
-                            </UserInfo>
-                            <UserMessage>{item.message}</UserMessage>
-                            <MessageDateUI dateSize={17}>
-                                1/1/2020 (0:00:00 PM)
-                            </MessageDateUI>
-                        </GivingsCard>
-                    </GivingsContainer>
-                )}
-            />
+            {_.isEmpty(globalGivings) ? (
+                <UserLocation>You shouldn't see this</UserLocation>
+            ) : (
+                <GivingsList
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    data={globalGivings.data}
+                    keyExtractor={(user) => user.user_email}
+                    renderItem={({ item }) => (
+                        <GivingsContainer>
+                            <GivingsCard>
+                                <UserInfo>
+                                    <UserImg
+                                        source={{
+                                            uri: `${item.user_image}`
+                                        }}
+                                    />
+                                    <UserNameLoc>
+                                        <UserFirstName>{item.first_name}</UserFirstName>
+                                        {/* <UserLocation>City, State</UserLocation> */}
+                                    </UserNameLoc>
+                                    <GiveIconType iconType={FOOD} />
+                                </UserInfo>
+                                <UserMessage>{item.message}</UserMessage>
+                                <MessageDateUI dateSize={17}>
+                                    {dtf.format(new Date('2020-03-29T19:19:48.000Z'))}
+                                    {/* 1/1/2020 (0:00:00 PM) */}
+                                </MessageDateUI>
+                            </GivingsCard>
+                        </GivingsContainer>
+                    )}
+                />
+            )}
         </GivingsContainer>
     );
 }
