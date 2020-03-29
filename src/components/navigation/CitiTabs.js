@@ -1,16 +1,13 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import {
-    MaterialCommunityIcons,
-    AntDesign,
-    FontAwesome,
-    Entypo,
-} from '@expo/vector-icons';
-import HomeScreen from '../../screens/HomeScreen';
-import MapScreen from '../../screens/MapScreen';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Entypo from 'react-native-vector-icons/Entypo';
 
-import { MapStack } from './CitiStack';
+import HomeScreen from '../../screens/HomeScreen';
+import MapStack from './CitiStack';
+import MapScreen from '../../screens/MapScreen';
 
 const Tabs = createMaterialBottomTabNavigator();
 
@@ -29,7 +26,7 @@ function CitiTabs() {
                 options={{
                     tabBarIcon: ({ color }) => (
                         <Entypo name='home' color={color} style={NavStyles} />
-                    ),
+                    )
                 }}
                 name='HomeScreen'
                 component={HomeScreen}
@@ -42,7 +39,7 @@ function CitiTabs() {
                             color={color}
                             style={NavStyles}
                         />
-                    ),
+                    )
                 }}
                 name='DonateScreen'
                 component={HomeScreen}
@@ -51,16 +48,16 @@ function CitiTabs() {
                 options={{
                     tabBarIcon: ({ color }) => (
                         <FontAwesome name='map' color={color} style={NavStyles} />
-                    ),
+                    )
                 }}
-                name='MapScreen'
+                name='MapStack'
                 component={MapStack}
             />
             <Tabs.Screen
                 options={{
                     tabBarIcon: ({ color }) => (
                         <FontAwesome name='bar-chart' color={color} style={NavStyles} />
-                    ),
+                    )
                 }}
                 name='LeaderboardScreen'
                 component={HomeScreen}
@@ -69,7 +66,7 @@ function CitiTabs() {
                 options={{
                     tabBarIcon: ({ color }) => (
                         <FontAwesome name='user' color={color} style={NavStyles} />
-                    ),
+                    )
                 }}
                 name='ProfileScreen'
                 component={HomeScreen}
@@ -80,8 +77,8 @@ function CitiTabs() {
 
 const styles = StyleSheet.create({
     NavStyles: {
-        fontSize: 25,
-    },
+        fontSize: 25
+    }
 });
 
 export default CitiTabs;

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
-import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 import CitiMapStyles from './CitiMapStyles';
+import Fonts from '../../../config/Fonts';
 
 const MapContainer = styled.View`
     height: ${(props) => (props.homeMap ? '320px' : '100%')};
@@ -12,7 +13,7 @@ const MapContainer = styled.View`
 
 const BtnText = styled.Text`
     font-size: 18px;
-    font-family: '600';
+    font-family: ${Fonts.F700};
     color: ${(props) => props.theme.primary};
 `;
 
@@ -61,7 +62,7 @@ function CitiMap({ homeMap }) {
         <MapContainer homeMap={homeMap}>
             <CitiMapStyles />
             {homeMap ? (
-                <ViewBtn onPress={() => navigation.navigate('MapScreen')}>
+                <ViewBtn onPress={() => navigation.navigate('MapStack')}>
                     <ViewIcon name='map-marker-radius' />
                     <BtnText>View Map</BtnText>
                 </ViewBtn>

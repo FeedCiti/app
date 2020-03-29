@@ -1,5 +1,8 @@
 import React from 'react';
-import { MaterialCommunityIcons, MaterialIcons, Foundation } from '@expo/vector-icons';
+import FontAwesome from 'react-native-vector-icons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Foundation from 'react-native-vector-icons/Foundation';
 import styled from 'styled-components/native';
 import { FOOD, CLOTHES, MONEY, MEDS } from './types.give';
 import theme from '../../../config/theme';

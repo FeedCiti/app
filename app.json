@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "expo": {
     "name": "Blank Template",
     "slug": "styledC",
@@ -28,3 +29,8 @@
     }
   }
 }
+=======
+  "name": "app",
+  "displayName": "app"
+}
+>>>>>>> native
