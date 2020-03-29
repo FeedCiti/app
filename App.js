@@ -9,7 +9,7 @@ import reduxThunk from 'redux-thunk';
 
 import reducers from './src/store/reducers/reducers';
 import theme from './config/theme';
-import Navigation from './src/components/Navigation';
+import Navigation from './src/components/navigation/Navigation';
 
 const composeEnhancers = compose;
 const store = createStore(reducers, composeEnhancers(applyMiddleware(reduxThunk)));

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
 import CitiMapStyles from './CitiMapStyles';
 
@@ -9,22 +10,25 @@ const MapContainer = styled.View`
     box-shadow: 0px 0px 5px ${(props) => props.theme.gray350};
 `;
 
-const TextExample = styled.Text`
+const BtnText = styled.Text`
     font-size: 18px;
     font-family: '600';
     color: ${(props) => props.theme.primary};
 `;
 
-const ViewBtn = styled.TouchableOpacity`
+const mapBtnStyles = `
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
     position: absolute;
-    top: 60px;
     right: 20px;
     padding: 12px 10px;
     align-items: center;
+    justify-content: center;
     border-radius: 8px;
+`;
+
+const ViewBtn = styled.TouchableOpacity`
+    ${mapBtnStyles}
+    top: 60px;
     background-color: ${(props) => props.theme.white};
     box-shadow: 0px 0px 5px ${(props) => props.theme.gray350};
 `;
@@ -35,14 +39,46 @@ const ViewIcon = styled(MaterialCommunityIcons)`
     color: ${(props) => props.theme.primary};
 `;
 
+const GiveBtn = styled.TouchableOpacity`
+    ${mapBtnStyles}
+    bottom: 35px;
+    background-color: ${(props) => props.theme.white};
+    box-shadow: 0px 0px 5px ${(props) => props.theme.gray350};
+`;
+
+const LocationIcon = styled(MaterialIcons)`
+    font-size: 22px;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    color: ${(props) => props.theme.primary};
+`;
+
 function CitiMap({ homeMap }) {
+    const navigation = useNavigation();
+
     return (
         <MapContainer homeMap={homeMap}>
             <CitiMapStyles />
-            <ViewBtn>
-                <ViewIcon name='map-marker-radius' />
-                <TextExample>View Map</TextExample>
-            </ViewBtn>
+            {homeMap ? (
+                <ViewBtn onPress={() => navigation.navigate('MapScreen')}>
+                    <ViewIcon name='map-marker-radius' />
+                    <BtnText>View Map</BtnText>
+                </ViewBtn>
+            ) : (
+                <>
+                    <GiveBtn
+                        style={{ marginRight: 55 }}
+                        onPress={() => navigation.navigate('GiveInput')}
+                    >
+                        <ViewIcon name='heart' />
+                        <BtnText>Give</BtnText>
+                    </GiveBtn>
+                    <GiveBtn>
+                        <LocationIcon name='my-location' />
+                    </GiveBtn>
+                </>
+            )}
         </MapContainer>
     );
 }

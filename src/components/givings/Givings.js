@@ -98,7 +98,7 @@ function Givings() {
                             <MessageDate>
                                 <Entypo name='calendar' style={{ fontSize: 17 }} />
                                 {'  '}
-                                1/1/2020(0:00:00 PM)
+                                1/1/2020 (0:00:00 PM)
                             </MessageDate>
                         </GivingsCard>
                     </GivingsContainer>

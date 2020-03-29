@@ -2,18 +2,10 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import styled from 'styled-components';
 
-import HomeMap from '../components/maps/HomeMap';
-
-const HomeContainer = styled.View`
-    background-color: #f1f1f1;
-`;
+import CitiMap from '../components/maps/CitiMap';
 
 function MapScreen() {
-    return (
-        <>
-            <HomeMap />
-        </>
-    );
+    return <CitiMap homeMap={false} />;
 }
 
 export default MapScreen;
