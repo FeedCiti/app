@@ -31,7 +31,7 @@ function HomeScreen() {
                     <CategoryText>Featured Projects</CategoryText>
                     <Charities charityType={FEATURED} />
                     <CategoryText>In Need of Help</CategoryText>
-                    <Charities charityType={HEALTH} />
+                    <Charities charityType={HEALTH} style={{ marginBottom: 12 }} />
                 </ScrollView>
             </HomeContainer>
         </>

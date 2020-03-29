@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Linking, TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { ProgressBar, Colors } from 'react-native-paper';
+
 import styled from 'styled-components';
 
 import Fonts from '../../../config/Fonts';
@@ -9,12 +11,11 @@ import { HEALTH, FEATURED } from './CharityTypes';
 
 // LIST STYLES \\
 const CharitiyList = styled.FlatList`
-    height: 290px;
+    height: 330px;
 `;
 
 const CharityContainer = styled.View`
     justify-content: center;
-    margin-bottom: 10px;
 `;
 
 const CharityImage = styled.Image`
@@ -25,7 +26,7 @@ const CharityImage = styled.Image`
 `;
 
 const CharityCard = styled.View`
-    min-height: 290px;
+    min-height: 330px;
     margin-left: 20px;
     width: 350px;
     border-radius: 8px;
@@ -34,7 +35,6 @@ const CharityCard = styled.View`
 `;
 
 // TEXT STYLES \\
-
 const CharityInfo = styled.View`
     padding: 20px;
 `;
@@ -73,6 +73,12 @@ const handleCharityTypeData = (charityType, dispatch) => {
 };
 /* eslint-enable */
 
+const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2
+});
+
 function Charities({ charityType }) {
     const dispatch = useDispatch();
 
@@ -97,12 +103,19 @@ function Charities({ charityType }) {
                                 />
                                 <CharityInfo>
                                     <CharityTitle>{item.title}</CharityTitle>
-                                    <CharityGoal>
-                                        <CharityGoal style={{ color: '#4C84FF' }}>
-                                            ${item.funding}{' '}
-                                        </CharityGoal>
-                                        Raised | Goal: ${item.goal}
+                                    <CharityGoal style={{ color: '#4C84FF' }}>
+                                        Raised: {formatter.format(item.funding)}
                                     </CharityGoal>
+                                    <CharityGoal>
+                                        Goal: {formatter.format(item.goal)}
+                                    </CharityGoal>
+                                    <ProgressBar
+                                        progress={item.funding / item.goal}
+                                        color={Colors.green800}
+                                        style={{
+                                            marginTop: 12
+                                        }}
+                                    />
                                 </CharityInfo>
                             </CharityCard>
                         </TouchableOpacity>

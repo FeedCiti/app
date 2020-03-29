@@ -8,6 +8,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import HomeScreen from '../../screens/HomeScreen';
 import MapStack from './CitiStack';
 import MapScreen from '../../screens/MapScreen';
+import ProfileScreen from '../../screens/ProfileScreen';
 
 const Tabs = createMaterialBottomTabNavigator();
 
@@ -69,7 +70,7 @@ function CitiTabs() {
                     )
                 }}
                 name='ProfileScreen'
-                component={HomeScreen}
+                component={ProfileScreen}
             />
         </Tabs.Navigator>
     );
