@@ -1,4 +1,3 @@
-import feedciti from '../../utils/feedciti';
 import { AUTH_START, AUTH_SUCCESS, AUTH_FAIL, AUTH_LOGOUT } from './action.types';
 import auth from '../../utils/auth';
 import jwt_decode from 'jwt-decode';
