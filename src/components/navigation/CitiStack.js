@@ -2,18 +2,19 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
-import { Feather } from '@expo/vector-icons';
+import Feather from 'react-native-vector-icons/Feather';
 import styled from 'styled-components/native';
+import Fonts from '../../../config/Fonts';
 
 import MapScreen from '../../screens/MapScreen';
 import GivingScreen from '../../screens/GivingScreen';
 
 const Stack = createStackNavigator();
 
-const Test = styled.Text`
-    font-family: '600';
-    font-size: 18px;
+const SubmitBtn = styled.Text`
+    font-size: 20px;
     margin-right: 12px;
+    font-family: ${Fonts.F700}
     color: ${(props) => props.theme.primary};
 `;
 
@@ -23,7 +24,7 @@ const BackBtn = styled(Feather)`
     color: ${(props) => props.theme.gray800};
 `;
 
-export function MapStack(props) {
+export function MapStack() {
     const navigation = useNavigation();
 
     return (
@@ -32,7 +33,7 @@ export function MapStack(props) {
                 name='Map'
                 component={MapScreen}
                 options={{
-                    headerShown: false,
+                    headerShown: false
                 }}
             />
             <Stack.Screen
@@ -42,7 +43,11 @@ export function MapStack(props) {
                     title: null,
                     // headerLeft: () => {
                     //     return (
-                    //         <TouchableOpacity onPress={() => navigation.goBack()}>
+                    //         <TouchableOpacity
+                    //             onPress={() => {
+                    //                 navigation.goBack();
+                    //             }}
+                    //         >
                     //             <BackBtn name='chevron-left' />
                     //         </TouchableOpacity>
                     //     );
@@ -50,13 +55,14 @@ export function MapStack(props) {
                     headerRight: () => {
                         return (
                             <TouchableOpacity>
-                                <Test>Send</Test>
+                                <SubmitBtn>Send</SubmitBtn>
                             </TouchableOpacity>
                         );
-                    },
+                    }
                 }}
             />
         </Stack.Navigator>
     );
 }
 
+export default MapStack;

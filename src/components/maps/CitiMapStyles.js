@@ -1,20 +1,22 @@
 import React from 'react';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
-import { customMapStyle } from './MapStyles';
+import MapboxGL from '@react-native-mapbox-gl/maps';
 
-const MapStyles = styled(MapView)`
+MapboxGL.setAccessToken(
+    'pk.eyJ1IjoiZGFtYW5zIiwiYSI6ImNrOGIzcXJwbTA0b2QzZXF1NGswdHZ2M3EifQ.Lv2yJfahkbMAQj0A2emlMw'
+);
+
+const MapStyles = styled(MapboxGL.MapView)`
     width: 100%;
     height: 100%;
 `;
 
 function CitiMapStyles() {
     return (
-        <MapStyles
-            provider={PROVIDER_GOOGLE}
-            customMapStyle={customMapStyle}
-            showsUserLocation={true}
-        />
+        <MapStyles styleURL={'mapbox://styles/mapbox/light-v10'}>
+            <MapboxGL.UserLocation />
+        </MapStyles>
     );
 }
 

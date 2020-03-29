@@ -15,6 +15,10 @@ export default {
     giveOrange: '#FCC57C',
     giveBlue: '#4C84FF',
     giveGreen: '#5CE164',
+<<<<<<< HEAD
     giveRed: '#F77171',
+=======
+    giveRed: '#F77171'
+>>>>>>> native
 };
 
