@@ -10,7 +10,7 @@ const HomeContainer = styled.View`
 `;
 
 const CategoryText = styled.Text`
-    font-size: 25px;
+    font-size: 23px;
     margin: 25px 0px 10px 20px;
     font-family: '800';
 `;
