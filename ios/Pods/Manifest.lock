@@ -488,7 +488,7 @@ SPEC CHECKSUMS:
   React-jsi: bc8166d6833cdcb0848c80710b26ce63fad2c099
   React-jsiexecutor: 8bf0b2707f05865113415088c398a7f98c0cf546
   React-jsinspector: 8e5913c4c6c54f0d3f9c9fc630c465a89cded65d
-  react-native-geolocation: c956aeb136625c23e0dce0467664af2c437888c9
+  react-native-geolocation: cbd9d6bd06bac411eed2671810f454d4908484a8
   react-native-mapbox-gl: 88e6bb18990c209c161b23debf3d76b214ca6319
   react-native-maps: 6e499eee4eabf422ba8b6f94e993cc768bf35153
   react-native-safe-area-context: 870aba8339684c9b888d42103580b687ff3f0d0c

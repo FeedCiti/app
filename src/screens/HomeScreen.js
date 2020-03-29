@@ -17,7 +17,7 @@ const CategoryText = styled.Text`
     font-size: 23px;
     font-family: ${Fonts.F800};
     letter-spacing: 0.5px;
-    margin: 15px 0px 10px 20px;
+    margin: 25px 0px 10px 20px;
 `;
 
 function HomeScreen() {
@@ -31,7 +31,7 @@ function HomeScreen() {
                     <CategoryText>Featured Projects</CategoryText>
                     <Charities charityType={FEATURED} />
                     <CategoryText>In Need of Help</CategoryText>
-                    <Charities charityType={HEALTH} style={{ marginBottom: 12 }} />
+                    <Charities charityType={HEALTH} />
                 </ScrollView>
             </HomeContainer>
         </>

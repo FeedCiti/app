@@ -1,45 +1,58 @@
 import React from 'react';
-import { View, Button } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import styled from 'styled-components';
+
 import { authLogin } from '../store/actions/action.auth';
-
-const Express = styled.Text`
-    font-size: 20px;
-`;
-
-const Tester1 = styled.Text`
-    font-size: 20px;
-    margin-top: 100px;
-`;
+import Fonts from '../../config/Fonts';
 
 const GivingContainer = styled.View`
     flex: 1;
-    background-color: ${(props) => props.theme.white};
+    justify-content: center;
+    background-color: ${(props) => props.theme.gray300};
 `;
 
-const Test = styled.TouchableOpacity`
-    margin-top: 50px;
-    height: 52px;
-    background-color: red;
+const AuthHeader = styled.Text`
+    font-size: 21px;
+    color: ${(props) => props.theme.white}
+    font-family: ${Fonts.F800};
+`;
+
+const AuthBtn = styled.TouchableOpacity`
+    height: 56px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin-top: 12px;
+    box-shadow: 0px 0px 5px ${(props) => props.theme.gray350};
+    background-color: ${(props) => props.theme.giveBlue};
+`;
+
+const AuthContent = styled.View`
+    margin: 12px 30px;
 `;
 
 const Profile = () => {
     const dispatch = useDispatch();
-    const { USER, isLoading, ERROR } = useSelector((state) => ({
-        USER: state.authReducer.user,
-        isLoading: state.authReducer.user,
-        ERROR: state.authReducer.error
-    }));
 
     return (
         <GivingContainer>
-            <Tester1>{JSON.stringify(USER)}</Tester1>
-            <Tester1>{JSON.stringify(isLoading)}</Tester1>
-            <Tester1>{JSON.stringify(ERROR)}</Tester1>
-            <Test title='Login' onPress={() => dispatch(authLogin())}>
-                <Express>Login amigo</Express>
-            </Test>
+            <AuthContent>
+                <AuthBtn
+                    placeholder='PLS'
+                    title='Login'
+                    onPress={() => dispatch(authLogin())}
+                >
+                    <AuthHeader>
+                        <Ionicons
+                            name='logo-google'
+                            style={{ fontSize: 27, marginRight: 12 }}
+                        />
+                        {'  '}
+                        SIGN IN WITH GOOGLE
+                    </AuthHeader>
+                </AuthBtn>
+            </AuthContent>
         </GivingContainer>
     );
 };

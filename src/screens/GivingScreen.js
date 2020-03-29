@@ -1,21 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Button, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Alert } from 'react-native';
-import RadioForm, {
-    RadioButton,
-    RadioButtonInput,
-    RadioButtonLabel
-} from 'react-native-simple-radio-button';
+import RadioForm from 'react-native-simple-radio-button';
 import { useSelector } from 'react-redux';
 import Geolocation from '@react-native-community/geolocation';
 import styled from 'styled-components';
 import { Formik } from 'formik';
 import feedciti from '../apis/feedciti';
 
-import { Button, TextInput, View } from 'react-native';
-
 import Fonts from '../../config/Fonts';
-import { MessageDateUI } from '../components/globalUI/GlobalUI';
 
 const GivingContainer = styled.View`
     flex: 1;
@@ -171,7 +164,7 @@ function GivingScreen() {
                             onBlur={handleBlur('description')}
                             value={values.description}
                         />
-                        <Button title='Submit' onPress={handleSubmit}></Button>
+                        <Button title='Submit' onPress={handleSubmit} />
                     </GivingContent>
                 </GivingContainer>
             )}
