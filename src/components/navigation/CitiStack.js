@@ -23,7 +23,7 @@ const BackBtn = styled(Feather)`
     color: ${(props) => props.theme.gray800};
 `;
 
-export function MapStack() {
+export function MapStack(props) {
     const navigation = useNavigation();
 
     return (
@@ -36,21 +36,17 @@ export function MapStack() {
                 }}
             />
             <Stack.Screen
-                name='GiveInput'
+                name='GivingScreen'
                 component={GivingScreen}
                 options={{
                     title: null,
-                    headerLeft: () => {
-                        return (
-                            <TouchableOpacity
-                                onPress={() => {
-                                    navigation.goBack();
-                                }}
-                            >
-                                <BackBtn name='chevron-left' />
-                            </TouchableOpacity>
-                        );
-                    },
+                    // headerLeft: () => {
+                    //     return (
+                    //         <TouchableOpacity onPress={() => navigation.goBack()}>
+                    //             <BackBtn name='chevron-left' />
+                    //         </TouchableOpacity>
+                    //     );
+                    // },
                     headerRight: () => {
                         return (
                             <TouchableOpacity>
