@@ -27,6 +27,8 @@ project.xcworkspace
 .idea
 .gradle
 local.properties
+.env
+api_keys.js
 
 # node.js
 #

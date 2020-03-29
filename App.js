@@ -8,7 +8,7 @@ import reducers from './src/store/reducers/reducers';
 import theme from './config/theme';
 import Navigation from './src/components/navigation/Navigation';
 
-const composeEnhancers = compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, composeEnhancers(applyMiddleware(reduxThunk)));
 
 export default function App() {
