@@ -3,8 +3,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
-import Fonts from '../../../config/Fonts';
 import CitiMapStyles from './CitiMapStyles';
+import Fonts from '../../../config/Fonts';
 
 const MapContainer = styled.View`
     height: ${(props) => (props.homeMap ? '320px' : '100%')};
@@ -62,7 +62,7 @@ function CitiMap({ homeMap }) {
         <MapContainer homeMap={homeMap}>
             <CitiMapStyles />
             {homeMap ? (
-                <ViewBtn onPress={() => navigation.navigate('MapScreen')}>
+                <ViewBtn onPress={() => navigation.navigate('MapStack')}>
                     <ViewIcon name='map-marker-radius' />
                     <BtnText>View Map</BtnText>
                 </ViewBtn>
@@ -70,7 +70,7 @@ function CitiMap({ homeMap }) {
                 <>
                     <GiveBtn
                         style={{ marginRight: 55 }}
-                        onPress={() => navigation.navigate('GiveInput')}
+                        onPress={() => navigation.navigate('GivingScreen')}
                     >
                         <ViewIcon name='heart' />
                         <BtnText>Give</BtnText>

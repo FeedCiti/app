@@ -1,9 +1,10 @@
-import React from 'react';
 import styled from 'styled-components/native';
+import React from 'react';
 import Entypo from 'react-native-vector-icons/Entypo';
 import GiveIconType from './GiveIconType';
 import Fonts from '../../../config/Fonts';
 import { FOOD, CLOTHES, MONEY, MEDS } from './types.give';
+import { MessageDateUI } from '../globalUI/GlobalUI';
 
 // GIVINGS LIST STYLES \\
 const GivingsList = styled.FlatList`
@@ -61,16 +62,13 @@ const UserMessage = styled.Text`
     color: ${(props) => props.theme.gray500};
 `;
 
-const MessageDate = styled.Text`
-    font-size: 17px;
-    font-family: ${Fonts.F700};
-    color: ${(props) => props.theme.gray350};
-`;
-
 function Givings() {
     // Remove later, this is just filler info
     const friends = [
-        { name: 'Friend #1', message: 'Lorem ipsun delorem Lorem ipsun delorem' },
+        {
+            name: 'Friend #1',
+            message: 'Lorem ipsun delorem Lorem ipsun delorem lorem lorem lorem'
+        },
         { name: 'Friend #2', message: 'Lorem ipsun delorem Lorem ipsun delorem' },
         { name: 'Friend #3', message: 'Lorem ipsun delorem Lorem ipsun delorem' },
         { name: 'Friend #4', message: 'Lorem ipsun delorem Lorem ipsun delorem' }
@@ -95,11 +93,9 @@ function Givings() {
                                 <GiveIconType iconType={FOOD} />
                             </UserInfo>
                             <UserMessage>{item.message}</UserMessage>
-                            <MessageDate>
-                                <Entypo name='calendar' style={{ fontSize: 17 }} />
-                                {'  '}
+                            <MessageDateUI dateSize={17}>
                                 1/1/2020 (0:00:00 PM)
-                            </MessageDate>
+                            </MessageDateUI>
                         </GivingsCard>
                     </GivingsContainer>
                 )}
