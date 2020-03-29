@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
@@ -8,9 +9,9 @@ import Fonts from '../../../config/Fonts';
 
 const MapContainer = styled.View`
     height: ${(props) => (props.homeMap ? '320px' : '100%')};
-    box-shadow: 0px 0px 5px ${(props) => props.theme.gray350};
 `;
 
+// box-shadow: 0px 0px 5px ${(props) => props.theme.gray500};
 const BtnText = styled.Text`
     font-size: 18px;
     font-family: ${Fonts.F700};
@@ -59,7 +60,7 @@ function CitiMap({ homeMap }) {
     const navigation = useNavigation();
 
     return (
-        <MapContainer homeMap={homeMap}>
+        <MapContainer homeMap={homeMap} style={styles.mapBorder}>
             <CitiMapStyles />
             {homeMap ? (
                 <ViewBtn onPress={() => navigation.navigate('MapStack')}>
@@ -83,5 +84,12 @@ function CitiMap({ homeMap }) {
         </MapContainer>
     );
 }
+
+const styles = StyleSheet.create({
+    mapBorder: {
+        borderBottomColor: '#cecece',
+        borderBottomWidth: 2
+    }
+});
 
 export default CitiMap;

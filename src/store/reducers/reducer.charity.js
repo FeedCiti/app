@@ -1,13 +1,14 @@
 import {
     CHARITY_START,
-    CHARITY_SUCCESS,
     CHARITY_HEALTH,
+    CHARITY_FEATURED,
     CHARITY_FAIL
 } from '../actions/action.types';
 import updateObject from './updateObject';
 
 const INIT_STATE = {
     healthCharities: [],
+    featuredCharity: [],
     loading: false,
     error: null
 };
@@ -17,6 +18,13 @@ const charityStart = (state) => updateObject(state, { error: null, loading: true
 const charityHealth = (state, action) =>
     updateObject(state, {
         healthCharities: action.payload,
+        error: null,
+        loading: false
+    });
+
+const charityFeatured = (state, action) =>
+    updateObject(state, {
+        featuredCharity: action.payload,
         error: null,
         loading: false
     });
@@ -31,6 +39,8 @@ function charityReducer(state = INIT_STATE, action) {
             return charityStart(state);
         case CHARITY_HEALTH:
             return charityHealth(state, action);
+        case CHARITY_FEATURED:
+            return charityFeatured(state, action);
         case CHARITY_FAIL:
             return charityFail(state, action);
         default:

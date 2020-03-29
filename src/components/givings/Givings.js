@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components/native';
 import { useDispatch } from 'react-redux';
-import Entypo from 'react-native-vector-icons/Entypo';
 
 import GiveIconType from './GiveIconType';
 import Fonts from '../../../config/Fonts';
 import { FOOD, CLOTHES, MONEY, MEDS } from './types.give';
 import { MessageDateUI } from '../globalUI/GlobalUI';
-import { fetchHealth } from '../../store/actions/action.charity';
 
 // GIVINGS LIST STYLES \\
 const GivingsList = styled.FlatList`
@@ -57,7 +55,6 @@ const UserLocation = styled.Text`
     font-family: ${Fonts.F600};
     color: ${(props) => props.theme.gray500};
 `;
-
 const UserMessage = styled.Text`
     font-size: 19px;
     margin: 12px 0px;
@@ -66,12 +63,6 @@ const UserMessage = styled.Text`
 `;
 
 function Givings() {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(fetchHealth());
-    }, []);
-
     // Remove later, this is just filler info
     const friends = [
         {
