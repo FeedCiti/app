@@ -69,7 +69,7 @@ function CitiMap({ homeMap }) {
                 <>
                     <GiveBtn
                         style={{ marginRight: 55 }}
-                        onPress={() => navigation.navigate('GiveInput')}
+                        onPress={() => navigation.navigate('GivingScreen')}
                     >
                         <ViewIcon name='heart' />
                         <BtnText>Give</BtnText>
