@@ -11,10 +11,10 @@ import GivingScreen from '../../screens/GivingScreen';
 
 const Stack = createStackNavigator();
 
-const Test = styled.Text`
-    font-size: 18px;
+const SubmitBtn = styled.Text`
+    font-size: 20px;
     margin-right: 12px;
-    font-family: ${Fonts.F700};
+    font-family: ${Fonts.F700}
     color: ${(props) => props.theme.primary};
 `;
 
@@ -24,7 +24,7 @@ const BackBtn = styled(Feather)`
     color: ${(props) => props.theme.gray800};
 `;
 
-function MapStack() {
+export function MapStack() {
     const navigation = useNavigation();
 
     return (
@@ -37,25 +37,25 @@ function MapStack() {
                 }}
             />
             <Stack.Screen
-                name='GiveInput'
+                name='GivingScreen'
                 component={GivingScreen}
                 options={{
                     title: null,
-                    headerLeft: () => {
-                        return (
-                            <TouchableOpacity
-                                onPress={() => {
-                                    navigation.goBack();
-                                }}
-                            >
-                                <BackBtn name='chevron-left' />
-                            </TouchableOpacity>
-                        );
-                    },
+                    // headerLeft: () => {
+                    //     return (
+                    //         <TouchableOpacity
+                    //             onPress={() => {
+                    //                 navigation.goBack();
+                    //             }}
+                    //         >
+                    //             <BackBtn name='chevron-left' />
+                    //         </TouchableOpacity>
+                    //     );
+                    // },
                     headerRight: () => {
                         return (
                             <TouchableOpacity>
-                                <Test>Send</Test>
+                                <SubmitBtn>Send</SubmitBtn>
                             </TouchableOpacity>
                         );
                     }

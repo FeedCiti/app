@@ -60,6 +60,8 @@ target 'app' do
   # Make also sure you have use_frameworks! enabled
   # use_frameworks!
 
+  pod 'react-native-material-kit', :path => '../node_modules/react-native-material-kit'
+
   target 'appTests' do
     inherit! :complete
     # Pods for testing

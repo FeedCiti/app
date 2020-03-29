@@ -7,6 +7,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 
 import HomeScreen from '../../screens/HomeScreen';
 import MapStack from './CitiStack';
+import MapScreen from '../../screens/MapScreen';
 
 const Tabs = createMaterialBottomTabNavigator();
 
@@ -49,7 +50,7 @@ function CitiTabs() {
                         <FontAwesome name='map' color={color} style={NavStyles} />
                     )
                 }}
-                name='MapScreen'
+                name='MapStack'
                 component={MapStack}
             />
             <Tabs.Screen
