@@ -10,6 +10,7 @@ import Navigation from './src/components/navigation/Navigation';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, composeEnhancers(applyMiddleware(reduxThunk)));
+console.disableYellowBox = true;
 
 export default function App() {
     return (

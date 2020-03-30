@@ -5,7 +5,6 @@ import _ from 'lodash';
 import feedciti from '../../apis/feedciti';
 import GiveIconType from './GiveIconType';
 import Fonts from '../../../config/Fonts';
-import { FOOD, CLOTHES, MONEY, MEDS } from './types.give';
 import { MessageDateUI } from '../globalUI/GlobalUI';
 
 // GIVINGS LIST STYLES \\
@@ -64,10 +63,12 @@ const UserMessage = styled.Text`
 `;
 
 function Givings() {
-    const dtf = new Intl.DateTimeFormat('en', {
+    const dtfDay = new Intl.DateTimeFormat('en', {
         year: 'numeric',
         month: 'short',
-        day: '2-digit',
+        day: '2-digit'
+    });
+    const dtfTime = new Intl.DateTimeFormat('en', {
         hour: 'numeric',
         minute: 'numeric',
         second: 'numeric'
@@ -77,6 +78,7 @@ function Givings() {
         feedciti
             .get('/api/givings')
             .then((res) => {
+                console.log(res.data);
                 setGivings(res.data);
             })
             .catch((err) => {
@@ -107,11 +109,12 @@ function Givings() {
                                         <UserFirstName>{item.first_name}</UserFirstName>
                                         {/* <UserLocation>City, State</UserLocation> */}
                                     </UserNameLoc>
-                                    <GiveIconType iconType={FOOD} />
+                                    <GiveIconType giveType={item.give_type} />
                                 </UserInfo>
                                 <UserMessage>{item.message}</UserMessage>
                                 <MessageDateUI dateSize={17}>
-                                    {dtf.format(new Date('2020-03-29T19:19:48.000Z'))}
+                                    {dtfDay.format(new Date('2020-03-29T19:19:48.000Z'))}{' '}
+                                    {dtfTime.format(new Date('2020-03-29T19:19:48.000Z'))}
                                     {/* 1/1/2020 (0:00:00 PM) */}
                                 </MessageDateUI>
                             </GivingsCard>

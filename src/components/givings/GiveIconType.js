@@ -4,18 +4,17 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
 import styled from 'styled-components/native';
-import { FOOD, CLOTHES, MONEY, MEDS } from './types.give';
 import theme from '../../../config/theme';
 
 const handleColorType = (type) => {
     switch (type) {
-        case FOOD:
+        case 1:
             return theme.giveOrange;
-        case CLOTHES:
+        case 2:
             return theme.giveBlue;
-        case MONEY:
+        case 3:
             return theme.giveGreen;
-        case MEDS:
+        case 4:
             return theme.giveRed;
         default:
             return theme.error;
@@ -48,23 +47,23 @@ const FOUNDATION = styled(Foundation)`
     ${iconStyles}
 `;
 
-const genIconType = (iconType) => {
-    switch (iconType) {
-        case FOOD:
+const genIconType = (giveType) => {
+    switch (giveType) {
+        case 1:
             return <MCI name='food' />;
-        case CLOTHES:
+        case 2:
             return <MCI name='tshirt-crew' />;
-        case MONEY:
+        case 3:
             return <MI name='attach-money' />;
-        case MEDS:
+        case 4:
             return <FOUNDATION name='first-aid' />;
         default:
             return <MI name='error' />;
     }
 };
 
-function GiveIconType({ iconType }) {
-    return <GiveTypeBG iconType={iconType}>{genIconType(iconType)}</GiveTypeBG>;
+function GiveIconType({ giveType }) {
+    return <GiveTypeBG iconType={giveType}>{genIconType(giveType)}</GiveTypeBG>;
 }
 
 export default GiveIconType;
