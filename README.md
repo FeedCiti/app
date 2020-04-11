@@ -1,5 +1,6 @@
 🐦📱HooHacks 2020 (🏆Winner) | React Native app for FeedCiti
 - Devpost: https://devpost.com/software/feedciti
+![feedciti](https://i.imgur.com/DVya4LZ.png)
 ## Inspiration
 In the United States alone, over 37 million people (including 11 million children) were not able to consistently provide food for their families in 2019. The United States is on the lower end of the poverty spectrum in comparison to many other underdeveloped countries. This is extremely alarming and tied with the recent outbreak of COVID-19 and the economic effects it will bring will only make this issue grow stronger. Many people waste food on a daily basis, and this was our inspiration to make a change.
 
